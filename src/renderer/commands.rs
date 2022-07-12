@@ -8,19 +8,19 @@ pub enum Command {
 }
 
 pub struct CommandQuad {
-    quad_count: usize,
-    vertex_buffer_offset: usize,
-    index_buffer_offset: usize,
+    pub quad_count: usize,
+    pub vertex_buffer_offset: usize,
+    pub index_buffer_offset: usize,
 }
 
 pub struct Commands {
-    commands: Vec<Command>,
-    vertices: Vec<Vertex>,
-    indices: Vec<usize>,
+    pub commands: Vec<Command>,
+    pub vertices: Vec<Vertex>,
+    pub indices: Vec<usize>,
 }
 
 pub struct QuadRenderData {
-    vertex_buffer_offset: usize,
+    pub vertex_buffer_offset: usize,
 }
 
 impl Commands {

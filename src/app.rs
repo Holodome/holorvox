@@ -4,7 +4,6 @@ pub struct App {
     ctx: sdl2::Sdl,
     vs: sdl2::VideoSubsystem,
     win: Window,
-    gl_ctx: GLContext,
 }
 
 impl App {
@@ -18,14 +17,11 @@ impl App {
             .build()
             .unwrap();
 
-        let gl_context = window.gl_create_context().unwrap();
-        gl::load_with(|s| video_subsystem.gl_get_proc_address(s) as *const std::os::raw::c_void);
 
         Self {
             ctx: sdl,
             vs: video_subsystem,
             win: window,
-            gl_ctx: gl_context,
         }
     }
 

@@ -1,10 +1,16 @@
-pub struct RendererSettings {
+use crate::renderer::commands::Commands;
+
+pub struct Settings {
 
 }
 
 pub struct Renderer {
-    settings: RendererSettings
+    settings: Settings,
+    backend: Box<dyn Backend>
+}
 
+pub trait Backend {
+    fn execute_commands(&mut self, commands: Commands);
 }
 
 impl Renderer {
