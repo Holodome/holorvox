@@ -37,7 +37,14 @@ impl OpenGL {
         }
     }
 
-    fn prepare_draw(&mut self) {}
+    fn prepare_draw(&mut self) {
+        unsafe {
+            gl::Enable(gl::DEPTH_TEST);
+            gl::Enable(gl::BLEND);
+            gl::BlendFuncSeparate(gl::SRC_ALPHA, gl::ONE_MINUS_SRC_ALPHA, gl::ONE, gl::ONE_MINUS_SRC_ALPHA);
+            gl::Viewport(0, 0, self.settings.viewport_size.x as i32, self.settings.viewport_size.y as i32);
+        }
+    }
 
     fn finalize_draw(&mut self) {}
 
