@@ -1,4 +1,4 @@
-use sdl2::video::{GLContext, Window};
+use sdl2::video::{Window};
 use crate::renderer::renderer;
 use crate::renderer::renderer::Renderer;
 use crate::{Vec2, Vec4};
@@ -7,7 +7,7 @@ pub struct App {
     ctx: sdl2::Sdl,
     vs: sdl2::VideoSubsystem,
     win: Window,
-    renderer: Renderer
+    renderer: Renderer,
 }
 
 impl App {
@@ -21,15 +21,15 @@ impl App {
             .build()
             .unwrap();
 
-        let renderer = Renderer::opengl(renderer::Settings {
-            viewport_size: Vec2::new(900.0, 700.0)
-        }, &window, &video_subsystem);
+        let renderer = Renderer::opengl(renderer::Settings::new(
+            Vec2::new(900.0, 700.0)
+        ).build(), &window, &video_subsystem);
 
         Self {
             ctx: sdl,
             vs: video_subsystem,
             win: window,
-            renderer
+            renderer,
         }
     }
 

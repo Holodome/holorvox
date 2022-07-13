@@ -1,6 +1,5 @@
 use crate::assets::Assets;
-use crate::renderer::commands::{CommandQuad, Commands};
-use crate::{Vec2, Vec3, Vec4};
+use crate::renderer::commands::{Commands};
 use crate::renderer::misc::{Quad, Setup};
 
 pub struct RenderGroup<'a> {
