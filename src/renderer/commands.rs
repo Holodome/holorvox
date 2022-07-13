@@ -1,4 +1,4 @@
-use crate::renderer::misc::{Quad, Setup, Vertex};
+use crate::renderer::misc::{IndexType, Quad, Setup, Vertex};
 use crate::Vec4;
 
 pub enum Command {
@@ -16,7 +16,7 @@ pub struct CommandQuad {
 pub struct Commands {
     pub commands: Vec<Command>,
     pub vertices: Vec<Vertex>,
-    pub indices: Vec<usize>,
+    pub indices: Vec<IndexType>,
 }
 
 pub struct QuadRenderData {
@@ -60,7 +60,7 @@ impl Commands {
             quad.c11,
         ));
 
-        let base_index = self.vertices.len() - command.vertex_buffer_offset;
+        let base_index: IndexType = (self.vertices.len() - command.vertex_buffer_offset - 4).try_into().unwrap();
         self.indices.push(base_index + 0);
         self.indices.push(base_index + 2);
         self.indices.push(base_index + 3);

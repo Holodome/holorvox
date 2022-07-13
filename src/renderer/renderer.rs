@@ -54,10 +54,10 @@ pub trait Backend {
 }
 
 impl Renderer {
-    pub fn opengl(settings: Settings, window: &Window, video_subsystem: &VideoSubsystem) -> Self {
+    pub fn opengl(settings: Settings) -> Self {
         Self {
             settings: settings.clone(),
-            backend: Box::new(OpenGL::new(settings, window, video_subsystem)),
+            backend: Box::new(OpenGL::new(settings)),
         }
     }
 
